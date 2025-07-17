@@ -1,0 +1,353 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   }
+
+        body {
+            background-color: #0a0a1a;
+            color: #e0e0ff;
+            overflow-x: hidden;
+        }
+ /* header SolarSystem-Animation */
+        header{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(0, 0, 0);
+            overflow: hidden; 
+        }
+        #solar-system {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            color: white;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none; 
+        }
+        .text-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            text-align: center;
+            pointer-events: auto; 
+        }
+         .text-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .text-container p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+            .edit-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+        .edit-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .edit-button:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .sun {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #fff000, #ff8000);
+            border-radius: 50%;
+            box-shadow: 0 0 80px rgba(255, 140, 0, 0.8);
+            animation: pulse 3s infinite alternate;
+            z-index: 1;
+        }
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            z-index: 2;
+        }
+        .orbit {
+            position: absolute;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform-origin: center;
+            z-index: 1;
+        }
+/* planet styles */
+                .planets-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .planet-card {
+            background: rgba(20, 20, 50, 0.7);
+            border-radius: 20px;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 100, 255, 0.1);
+        }
+
+        .planet-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+        }
+
+        .planet-animation {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 150, 255, 0.3);
+        }
+
+        .planet-info {
+            padding: 1rem;
+        }
+
+        .planet-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #7ad0ff;
+            text-align: center;
+        }
+
+        .planet-description {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .planet-facts {
+            margin-top: 1rem;
+        }
+
+        .fact-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(100, 100, 255, 0.1);
+        }
+
+        .fact-label {
+            font-weight: bold;
+            color: #7ad0ff;
+        }
+
+        .fact-value {
+            text-align: right;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 20, 0.8);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .planets-container {
+                padding: 1rem;
+            }
+            
+            .planet-card {
+                max-width: 100%;
+            }
+            
+            .planet-animation {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+ /* Mercury Animation */
+        #mercury {
+            background: linear-gradient(90deg, #b5b5b5, #d3d3d3);
+            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
+        }
+
+        #mercury::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ffffff, transparent 30%);
+            animation: rotate 20s linear infinite;
+        }
+
+/* Venus Animation */
+        #venus {
+            background: linear-gradient(90deg, #e6b980, #e6a560);
+            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
+        }
+
+        #venus::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #f5d9b0, transparent 30%);
+            animation: rotate 30s linear infinite reverse;
+        }
+
+/* Earth Animation */
+        #earth {
+            background: linear-gradient(90deg, #1a66ff, #33ccff);
+            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
+        }
+
+        #earth::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: 
+                radial-gradient(circle at 30% 30%, #4dff4d, transparent 30%),
+                radial-gradient(circle at 70% 70%, #ff9933, transparent 30%);
+            animation: rotate 15s linear infinite;
+        }
+
+/* Mars Animation */
+        #mars {
+            background: linear-gradient(90deg, #c1440e, #e2711d);
+            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
+        }
+
+        #mars::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ff704d, transparent 30%);
+            animation: rotate 25s linear infinite reverse;
+        }
+
+ /* Jupiter Animation */
+        #jupiter {
+            background: linear-gradient(90deg, #d39c6e, #b88a5e);
+            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
+        }
+
+        #jupiter::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: 
+                radial-gradient(circle at 20% 20%, #f5d9b0, transparent 20%),
+                radial-gradient(circle at 60% 60%, #e6b980, transparent 20%),
+                radial-gradient(circle at 40% 80%, #d39c6e, transparent 20%);
+            animation: rotate 10s linear infinite;
+        }
+
+/* Saturn Animation */
+        #saturn {
+            background: linear-gradient(90deg, #e6d8a8, #d8c48a);
+            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
+        }
+
+        #saturn::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #f5e6b0, transparent 30%);
+            animation: rotate 18s linear infinite;
+        }
+
+        #saturn::after {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 20px;
+            background: rgba(210, 180, 140, 0.5);
+            border-radius: 10px;
+            top: 50%;
+            left: -10%;
+            transform: translateY(-50%) rotate(20deg);
+        }
+
+/* Uranus Animation */
+        #uranus {
+            background: linear-gradient(90deg, #4da6ff, #66c2ff);
+            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
+        }
+
+        #uranus::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #99ddff, transparent 30%);
+            animation: rotate 22s linear infinite reverse;
+        }
+
+/* Neptune Animation */
+        #neptune {
+            background: linear-gradient(90deg, #1a66ff, #3385ff);
+            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
+        }
+
+        #neptune::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #4da6ff, transparent 30%);
+            animation: rotate 17s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 60px rgba(255, 140, 0, 0.8); }
+            50% { box-shadow: 0 0 100px rgba(255, 180, 50, 0.9); }
+            100% { box-shadow: 0 0 60px rgba(255, 140, 0, 0.8); }
+        }
