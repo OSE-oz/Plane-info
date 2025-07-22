@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plant info</title>
-    <link rel="stylesheet" href="index/style.css">
     <link rel="icon" href="pic/icon.jpg" type="image/png" />
     <style>
          * {
@@ -100,6 +99,26 @@
             transform-origin: center;
             z-index: 1;
         }
+                .moon-orbit {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: -10px;
+            left: -10px;
+            border-radius: 50%;
+            transform-origin: center;
+            animation: rotate 2s linear infinite;
+        }
+
+        .moon {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #ccc;
+            border-radius: 50%;
+            top: 0;
+            left: calc(50% - 2.5px);
+        }
 /* planet styles */
         .planets-container {
             display: flex;
@@ -134,7 +153,7 @@
             margin: 0 auto 1.5rem;
             border-radius: 50%;
             position: relative;
-            box-shadow: 0 0 30px rgba(0, 150, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.301);
         }
 
         .planet-info {
@@ -180,19 +199,20 @@
             margin-top: 2rem;
         }
 
-        @media (max-width: 768px) {
-            .planets-container {
-                padding: 1rem;
-            }
-            
-            .planet-card {
-                max-width: 100%;
-            }
-            
-            .planet-animation {
-                width: 150px;
-                height: 150px;
-            }
+       .fact-label {
+            font-weight: bold;
+            color: #7ad0ff;
+        }
+
+        .fact-value {
+            text-align: right;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 20, 0.8);
+            margin-top: 2rem;
         }
 
  /* Mercury Animation */
@@ -228,27 +248,11 @@
         }
 
 /* Earth Animation */
-        #earth {
-            background: linear-gradient(90deg, #1a66ff, #33ccff);
-            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
-        }
-
-        #earth::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: 
-                radial-gradient(circle at 30% 30%, #4dff4d, transparent 30%),
-                radial-gradient(circle at 70% 70%, #ff9933, transparent 30%);
-            animation: rotate 15s linear infinite;
-        }
 
 /* Mars Animation */
         #mars {
             background: linear-gradient(90deg, #c1440e, #e2711d);
-            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
+            box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.3);
         }
 
         #mars::before {
@@ -349,49 +353,60 @@
             50% { box-shadow: 0 0 100px rgba(255, 180, 50, 0.9); }
             100% { box-shadow: 0 0 60px rgba(255, 140, 0, 0.8); }
         }
+
+            canvas {
+      display: block;
+      border-radius: 50%;
+    }
     </style>
 </head>
  </body>
  <body>
 <header>
 
-     <div id="solar-system">
+    <div id="solar-system">
         <!-- Sun -->
         <div class="sun"></div>
 
-        <!-- Orbits and Planets -->
+        <!-- Mercury -->
         <div class="orbit" style="width: 150px; height: 150px; top: calc(50% - 75px); left: calc(50% - 75px); animation: rotate 6s linear infinite;">
             <div class="planet" style="width: 10px; height: 10px; background: #888; top: 0; left: calc(50% - 5px);"></div>
         </div>
 
+        <!-- Earth + Moon -->
         <div class="orbit" style="width: 250px; height: 250px; top: calc(50% - 125px); left: calc(50% - 125px); animation: rotate 12s linear infinite;">
-            <div class="planet" style="width: 20px; height: 20px; background: #49a0d8; top: 0; left: calc(50% - 10px);"></div>
-            <div class="moon" style="position: absolute; width: 5px; height: 5px; background: #ccc; border-radius: 50%; top: -15px; left: calc(50% - 2.5px);"></div>
+            <div class="planet" style="width: 20px; height: 20px; background: #49a0d8; position: absolute; top: 0; left: calc(50% - 10px);">
+                <div class="moon-orbit">
+                    <div class="moon"></div>
+                </div>
+            </div>
         </div>
 
+        <!-- Mars -->
         <div class="orbit" style="width: 350px; height: 350px; top: calc(50% - 175px); left: calc(50% - 175px); animation: rotate 20s linear infinite;">
             <div class="planet" style="width: 15px; height: 15px; background: #d84949; top: 0; left: calc(50% - 7.5px);"></div>
         </div>
 
+        <!-- Jupiter -->
         <div class="orbit" style="width: 450px; height: 450px; top: calc(50% - 225px); left: calc(50% - 225px); animation: rotate 30s linear infinite;">
             <div class="planet" style="width: 25px; height: 25px; background: #e3e36a; top: 0; left: calc(50% - 12.5px);"></div>
         </div>
 
+        <!-- Saturn -->
         <div class="orbit" style="width: 550px; height: 550px; top: calc(50% - 275px); left: calc(50% - 275px); animation: rotate 45s linear infinite;">
             <div class="planet" style="width: 40px; height: 40px; background: #b98b3c; top: 0; left: calc(50% - 20px);"></div>
         </div>
 
-        <!-- Stars Background (optional) -->
+        <!-- Stars Background -->
         <div id="stars"></div>
     </div>
 
     <div class="content-overlay">
         <div class="text-container">
             <h1>Solar System Journey</h1>
-            <p>Explore the wonders of our cosmic neighborhood.The solar system consists of the Sun.
-              and the celestial objects bound to it by gravity
-             ,including planets.</p>
-
+            <p>Explore the wonders of our cosmic neighborhood. The solar system consists of the Sun and the celestial objects bound to it by gravity, including planets.</p>
+        </div>
+    </div>
 </header>
 
 
@@ -595,12 +610,38 @@
                 </div>
             </div>
         </div>
+     <div class="planet-card">
+      <div id="moon" class="planet-animation"></div>
+      <div class="planet-info">
+        <h2 class="planet-name">Moon</h2>
+        <p class="planet-description">
+        From lighting up our skies to preserving evidence of our solar system’s history, Earth’s closest neighbor plays a pivotal role in the study of our planet and beyond.
+        </p>
+        <div class="planet-facts">
+          <div class="fact-item">
+            <span class="fact-label">Diameter:</span>
+            <span class="fact-value">3 474,8 km</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">Orbit Period:</span>
+            <span class="fact-value">27 days</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">Surface Temp:</span>
+            <span class="fact-value">-298°F to 260°F</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+   
     </div>
 
     <footer>
         <p>Azell-ose</p>
     </footer>
-    <script src="index/script.js"></script>
+    
     <script>
          // Generate random stars
 function createStars() {
@@ -622,4 +663,88 @@ function createStars() {
 // Initialize stars
         createStars();
     </script>
+      <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
+    <script>
+const container = document.getElementById("earth");
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(200, 200);
+    container.appendChild(renderer.domElement);
+
+    // Scene and Camera
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.z = 5;
+
+    // Geometry, Material, Texture
+    const geometry = new THREE.SphereGeometry(2, 64, 64);
+    const texture = new THREE.TextureLoader().load("https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg");
+    const material = new THREE.MeshStandardMaterial({ map: texture });
+    const earthMesh = new THREE.Mesh(geometry, material);
+    scene.add(earthMesh);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    const pointLight = new THREE.PointLight(0xffffff, 1.2);
+    pointLight.position.set(5, 5, 5);
+    scene.add(ambientLight, pointLight);
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      earthMesh.rotation.y += 0.003;
+      renderer.render(scene, camera);
+    }
+    animate();
+    </script>
+    
+  </script>
+
+  <script>
+   
+  const moonContainer = document.getElementById("moon");
+
+  // Moon Renderer
+  const moonRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  moonRenderer.setSize(200, 200);
+  moonContainer.appendChild(moonRenderer.domElement);
+
+  // Moon Scene and Camera
+  const moonScene = new THREE.Scene();
+  const moonCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  moonCamera.position.z = 5;
+
+  // Moon Geometry and Material
+  const moonGeometry = new THREE.SphereGeometry(2, 64, 64);
+  const moonTexture = new THREE.TextureLoader().load("https://threejs.org/examples/textures/planets/moon_1024.jpg");
+  const moonMaterial = new THREE.MeshStandardMaterial({ map: moonTexture });
+  const moonMesh = new THREE.Mesh(moonGeometry, moonMaterial);
+  moonScene.add(moonMesh);
+
+  // Moon Lighting
+  const moonAmbientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  const moonPointLight = new THREE.PointLight(0xffffff, 1.2);
+  moonPointLight.position.set(5, 5, 5);
+  moonScene.add(moonAmbientLight, moonPointLight);
+
+  // Moon Animation loop
+  function animateMoon() {
+    requestAnimationFrame(animateMoon);
+    moonMesh.rotation.y += 0.003;
+    moonRenderer.render(moonScene, moonCamera);
+  }
+  animateMoon();
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
 </html>
