@@ -91,7 +91,7 @@
             transform-origin: center;
             z-index: 1;
         }
-                .moon-orbit {
+            .moon-orbit {
             position: absolute;
             width: 40px;
             height: 40px;
@@ -140,12 +140,12 @@
         }
 
         .planet-animation {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             margin: 0 auto 1.5rem;
             border-radius: 50%;
             position: relative;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.301);
+            box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.15);
         }
 
         .planet-info {
@@ -207,135 +207,8 @@
             margin-top: 2rem;
         }
 
- /* Mercury Animation */
-        #mercury {
-            background: linear-gradient(90deg, #b5b5b5, #d3d3d3);
-            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
-        }
 
-        #mercury::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #ffffff, transparent 30%);
-            animation: rotate 20s linear infinite;
-        }
-
-/* Venus Animation */
-        #venus {
-            background: linear-gradient(90deg, #e6b980, #e6a560);
-            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
-        }
-
-        #venus::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #f5d9b0, transparent 30%);
-            animation: rotate 30s linear infinite reverse;
-        }
-
-/* Earth Animation */
-
-/* Mars Animation */
-        #mars {
-            background: linear-gradient(90deg, #c1440e, #e2711d);
-            box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        #mars::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #ff704d, transparent 30%);
-            animation: rotate 25s linear infinite reverse;
-        }
-
- /* Jupiter Animation */
-        #jupiter {
-            background: linear-gradient(90deg, #d39c6e, #b88a5e);
-            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
-        }
-
-        #jupiter::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: 
-                radial-gradient(circle at 20% 20%, #f5d9b0, transparent 20%),
-                radial-gradient(circle at 60% 60%, #e6b980, transparent 20%),
-                radial-gradient(circle at 40% 80%, #d39c6e, transparent 20%);
-            animation: rotate 10s linear infinite;
-        }
-
-/* Saturn Animation */
-        #saturn {
-            background: linear-gradient(90deg, #e6d8a8, #d8c48a);
-            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
-        }
-
-        #saturn::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #f5e6b0, transparent 30%);
-            animation: rotate 18s linear infinite;
-        }
-
-        #saturn::after {
-            content: '';
-            position: absolute;
-            width: 120%;
-            height: 20px;
-            background: rgba(210, 180, 140, 0.5);
-            border-radius: 10px;
-            top: 50%;
-            left: -10%;
-            transform: translateY(-50%) rotate(20deg);
-        }
-
-/* Uranus Animation */
-        #uranus {
-            background: linear-gradient(90deg, #4da6ff, #66c2ff);
-            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
-        }
-
-        #uranus::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #99ddff, transparent 30%);
-            animation: rotate 22s linear infinite reverse;
-        }
-
-/* Neptune Animation */
-        #neptune {
-            background: linear-gradient(90deg, #1a66ff, #3385ff);
-            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.3);
-        }
-
-        #neptune::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #4da6ff, transparent 30%);
-            animation: rotate 17s linear infinite;
-        }
-
+      
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
