@@ -5,7 +5,233 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plant info</title>
     <link rel="icon" href="pic/icon.jpg" type="image/png" />
-    <link rel="stylesheet" href="index/st.css">
+    <style>
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   }
+
+        body {
+            background-color: #0a0a1a;
+            color: #e0e0ff;
+            overflow-x: hidden;
+        }
+ /* header SolarSystem-Animation */
+        header{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(0, 0, 0);
+            overflow: hidden; 
+        }
+        #solar-system {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            color: white;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none; 
+        }
+        .text-container {
+            background-color: rgba(0, 0, 0, 0.452);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 800px;
+            text-align: center;
+            pointer-events: auto;    
+        }
+         .text-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .text-container p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            text-align: left;
+        }
+            .edit-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+        .sun {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #fff000, #ff8000);
+            border-radius: 50%;
+            box-shadow: 0 0 80px rgba(255, 140, 0, 0.8);
+            animation: pulse 3s infinite alternate;
+            z-index: 1;
+        }
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            z-index: 2;
+        }
+        .orbit {
+            position: absolute;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform-origin: center;
+            z-index: 1;
+        }
+            .moon-orbit {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: -10px;
+            left: -10px;
+            border-radius: 50%;
+            transform-origin: center;
+            animation: rotate 2s linear infinite;
+        }
+
+        .moon {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #ccc;
+            border-radius: 50%;
+            top: 0;
+            left: calc(50% - 2.5px);
+        }
+/* planet styles */
+        .planets-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .planet-card {
+            background: rgba(20, 20, 50, 0.7);
+            border-radius: 20px;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 100, 255, 0.1);
+        }
+
+        .planet-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+        }
+
+        .planet-animation {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        .planet-info {
+            padding: 1rem;
+        }
+
+        .planet-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #7ad0ff;
+            text-align: center;
+        }
+
+        .planet-description {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .planet-facts {
+            margin-top: 1rem;
+        }
+
+        .fact-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(100, 100, 255, 0.1);
+        }
+
+        .fact-label {
+            font-weight: bold;
+            color: #7ad0ff;
+        }
+
+        .fact-value {
+            text-align: right;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 20, 0.8);
+            margin-top: 2rem;
+        }
+
+       .fact-label {
+            font-weight: bold;
+            color: #7ad0ff;
+        }
+
+        .fact-value {
+            text-align: right;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 20, 0.8);
+            margin-top: 2rem;
+        }
+
+
+      
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 60px rgba(255, 140, 0, 0.8); }
+            50% { box-shadow: 0 0 100px rgba(255, 180, 50, 0.9); }
+            100% { box-shadow: 0 0 60px rgba(255, 140, 0, 0.8); }
+        }
+
+     canvas {
+      display: block;
+      border-radius: 50%;
+    }
+    </style>
 </head>
  </body>
  <body>
@@ -283,7 +509,322 @@
   </div>
 </div>
  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
-<script src="index/scri.js"></script>
+<script>
+             // Generate random stars
+function createStars() {
+        const stars = document.getElementById('stars');
+        const count = 200;            
+    for (let i = 0; i < count; i++) {
+        const star = document.createElement('div');
+        star.style.position = 'absolute';
+        star.style.width = Math.random() * 3 + 'px';
+        star.style.height = star.style.width;           
+        star.style.backgroundColor = 'white';
+        star.style.borderRadius = '50%';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.opacity = Math.random();
+        stars.appendChild(star);
+    }
+}
+
+// Initialize stars
+        createStars();
+
+const container = document.getElementById("earth");
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(220, 220);
+    container.appendChild(renderer.domElement);
+
+    // Scene and Camera
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.z = 5;
+
+    // Geometry, Material, Texture
+    const geometry = new THREE.SphereGeometry(2, 64, 64);
+    const texture = new THREE.TextureLoader().load("https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg");
+    const material = new THREE.MeshStandardMaterial({ map: texture });
+    const earthMesh = new THREE.Mesh(geometry, material);
+    scene.add(earthMesh);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    const pointLight = new THREE.PointLight(0xffffff, 1.2);
+    pointLight.position.set(5, 5, 5);
+    scene.add(ambientLight, pointLight);
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      earthMesh.rotation.y += 0.003;
+      renderer.render(scene, camera);
+    }
+    animate();
+  
+    
+  const moonContainer = document.getElementById("moon");
+
+  // Moon Renderer
+  const moonRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  moonRenderer.setSize(220, 220);
+  moonContainer.appendChild(moonRenderer.domElement);
+
+  // Moon Scene and Camera
+  const moonScene = new THREE.Scene();
+  const moonCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  moonCamera.position.z = 5;
+
+  // Moon Geometry and Material
+  const moonGeometry = new THREE.SphereGeometry(2, 64, 64);
+  const moonTexture = new THREE.TextureLoader().load("https://threejs.org/examples/textures/planets/moon_1024.jpg");
+  const moonMaterial = new THREE.MeshStandardMaterial({ map: moonTexture });
+  const moonMesh = new THREE.Mesh(moonGeometry, moonMaterial);
+  moonScene.add(moonMesh);
+
+  // Moon Lighting
+  const moonAmbientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  const moonPointLight = new THREE.PointLight(0xffffff, 1.2);
+  moonPointLight.position.set(5, 5, 5);
+  moonScene.add(moonAmbientLight, moonPointLight);
+
+  // Moon Animation loop
+  function animateMoon() {
+    requestAnimationFrame(animateMoon);
+    moonMesh.rotation.y += 0.003;
+    moonRenderer.render(moonScene, moonCamera);
+  }
+  animateMoon();
+
+
+  
+const mercuryContainer = document.getElementById("mercury");
+
+// Mercury Renderer
+const mercuryRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+mercuryRenderer.setSize(220, 220);
+mercuryContainer.appendChild(mercuryRenderer.domElement);
+
+// Mercury Scene and Camera
+const mercuryScene = new THREE.Scene();
+const mercuryCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+mercuryCamera.position.z = 5;
+
+// Mercury Geometry and Material
+const mercuryGeometry = new THREE.SphereGeometry(2, 64, 64);
+const mercuryTexture = new THREE.TextureLoader().load("pic/2k_mercury.jpg"); // Make sure this file path is correct
+const mercuryMaterial = new THREE.MeshStandardMaterial({ map: mercuryTexture });
+const mercuryMesh = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
+mercuryScene.add(mercuryMesh);
+
+// Mercury Lighting
+const mercuryAmbientLight = new THREE.AmbientLight(0xffffff, 0.6);
+const mercuryPointLight = new THREE.PointLight(0xffffff, 1.2);
+mercuryPointLight.position.set(5, 5, 5);
+mercuryScene.add(mercuryAmbientLight, mercuryPointLight);
+
+// Mercury Animation loop
+function animateMercury() {
+  requestAnimationFrame(animateMercury);
+  mercuryMesh.rotation.y += 0.003;
+  mercuryRenderer.render(mercuryScene, mercuryCamera);
+}
+animateMercury();
+
+const venusContainer = document.getElementById("venus");
+
+// Venus Renderer
+const venusRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+venusRenderer.setSize(220, 220);
+venusContainer.appendChild(venusRenderer.domElement);
+
+// Venus Scene and Camera
+const venusScene = new THREE.Scene();
+const venusCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+venusCamera.position.z = 5;
+
+// Venus Geometry and Material
+const venusGeometry = new THREE.SphereGeometry(2, 64, 64);
+const venusTexture = new THREE.TextureLoader().load("pic/2k_venus_surface.jpg"); // Update path if needed
+const venusMaterial = new THREE.MeshStandardMaterial({ map: venusTexture });
+const venusMesh = new THREE.Mesh(venusGeometry, venusMaterial);
+venusScene.add(venusMesh);
+
+// Venus Lighting
+const venusAmbientLight = new THREE.AmbientLight(0xffffff, 0.6);
+const venusPointLight = new THREE.PointLight(0xffffff, 1.2);
+venusPointLight.position.set(5, 5, 5);
+venusScene.add(venusAmbientLight, venusPointLight);
+
+// Venus Animation loop
+function animateVenus() {
+  requestAnimationFrame(animateVenus);
+  venusMesh.rotation.y += 0.003;
+  venusRenderer.render(venusScene, venusCamera);
+}
+animateVenus();
+
+const marsContainer = document.getElementById("mars");
+
+// Mars Renderer
+const marsRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+marsRenderer.setSize(220, 220);
+marsContainer.appendChild(marsRenderer.domElement);
+
+// Mars Scene and Camera
+const marsScene = new THREE.Scene();
+const marsCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+marsCamera.position.z = 5;
+
+// Mars Geometry and Material
+const marsGeometry = new THREE.SphereGeometry(2, 64, 64);
+const marsTexture = new THREE.TextureLoader().load("pic/2k_mars.jpg"); // Adjust path if needed
+const marsMaterial = new THREE.MeshStandardMaterial({ map: marsTexture });
+const marsMesh = new THREE.Mesh(marsGeometry, marsMaterial);
+marsScene.add(marsMesh);
+
+// Mars Lighting
+const marsAmbientLight = new THREE.AmbientLight(0xffffff, 0.6);
+const marsPointLight = new THREE.PointLight(0xffffff, 1.2);
+marsPointLight.position.set(5, 5, 5);
+marsScene.add(marsAmbientLight, marsPointLight);
+
+// Mars Animation loop
+function animateMars() {
+  requestAnimationFrame(animateMars);
+  marsMesh.rotation.y += 0.003;
+  marsRenderer.render(marsScene, marsCamera);
+}
+animateMars();
+
+const jupiterContainer = document.getElementById("jupiter");
+
+// Jupiter Renderer
+const jupiterRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+jupiterRenderer.setSize(220, 220);
+jupiterContainer.appendChild(jupiterRenderer.domElement);
+
+// Jupiter Scene and Camera
+const jupiterScene = new THREE.Scene();
+const jupiterCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+jupiterCamera.position.z = 5;
+
+// Jupiter Geometry and Material
+const jupiterGeometry = new THREE.SphereGeometry(2, 64, 64);
+const jupiterTexture = new THREE.TextureLoader().load("pic/2k_jupiter.jpg"); // Adjust path if needed
+const jupiterMaterial = new THREE.MeshStandardMaterial({ map: jupiterTexture });
+const jupiterMesh = new THREE.Mesh(jupiterGeometry, jupiterMaterial);
+jupiterScene.add(jupiterMesh);
+
+// Jupiter Lighting
+const jupiterAmbientLight = new THREE.AmbientLight(0xffffff, 0.6);
+const jupiterPointLight = new THREE.PointLight(0xffffff, 1.2);
+jupiterPointLight.position.set(5, 5, 5);
+jupiterScene.add(jupiterAmbientLight, jupiterPointLight);
+
+// Jupiter Animation loop
+function animateJupiter() {
+  requestAnimationFrame(animateJupiter);
+  jupiterMesh.rotation.y += 0.003;
+  jupiterRenderer.render(jupiterScene, jupiterCamera);
+}
+animateJupiter();
+
+const uranusContainer = document.getElementById("uranus");
+
+// Uranus Renderer
+const uranusRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+uranusRenderer.setSize(220, 220);
+uranusContainer.appendChild(uranusRenderer.domElement);
+
+// Uranus Scene and Camera
+const uranusScene = new THREE.Scene();
+const uranusCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+uranusCamera.position.z = 5;
+
+// Uranus Geometry and Material
+const uranusGeometry = new THREE.SphereGeometry(2, 64, 64);
+const uranusTexture = new THREE.TextureLoader().load("pic/2k_uranus.jpg"); // Adjust path if needed
+const uranusMaterial = new THREE.MeshStandardMaterial({ map: uranusTexture });
+const uranusMesh = new THREE.Mesh(uranusGeometry, uranusMaterial);
+uranusScene.add(uranusMesh);
+
+// Uranus Lighting
+const uranusAmbientLight = new THREE.AmbientLight(0xffffff, 0.6);
+const uranusPointLight = new THREE.PointLight(0xffffff, 1.2);
+uranusPointLight.position.set(5, 5, 5);
+uranusScene.add(uranusAmbientLight, uranusPointLight);
+
+// Uranus Animation loop
+function animateUranus() {
+  requestAnimationFrame(animateUranus);
+  uranusMesh.rotation.y += 0.003;
+  uranusRenderer.render(uranusScene, uranusCamera);
+}
+animateUranus();
+const neptuneContainer = document.getElementById("neptune");  
+// Neptune Renderer
+const neptuneRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+neptuneRenderer.setSize(220, 220);
+neptuneContainer.appendChild(neptuneRenderer.domElement); 
+// Neptune Scene and Camera
+const neptuneScene = new THREE.Scene();
+const neptuneCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+neptuneCamera.position.z = 5;
+
+// Neptune Geometry and Material
+const neptuneGeometry = new THREE.SphereGeometry(2, 64, 64);  
+const neptuneTexture = new THREE.TextureLoader().load("pic/2k_neptune.jpg"); // Adjust path if needed
+const neptuneMaterial = new THREE.MeshStandardMaterial({ map: neptuneTexture });
+const neptuneMesh = new THREE.Mesh(neptuneGeometry, neptuneMaterial);
+neptuneScene.add(neptuneMesh);
+
+// Neptune Lighting
+const neptuneAmbientLight = new THREE.AmbientLight(0xffffff, 0.6);
+const neptunePointLight = new THREE.PointLight(0xffffff, 1.2);
+neptunePointLight.position.set(5, 5, 5);
+neptuneScene.add(neptuneAmbientLight, neptunePointLight);
+// Neptune Animation loop
+function animateNeptune() {
+  requestAnimationFrame(animateNeptune);
+  neptuneMesh.rotation.y += 0.003;
+  neptuneRenderer.render(neptuneScene, neptuneCamera);
+}
+animateNeptune();
+
+// saturn
+const saturnContainer = document.getElementById("saturn");
+// Saturn Renderer
+const saturnRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+saturnRenderer.setSize(220, 220);
+saturnContainer.appendChild(saturnRenderer.domElement);
+// Saturn Scene and Camera
+const saturnScene = new THREE.Scene();
+const saturnCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+saturnCamera.position.z = 5;
+// Saturn Geometry and Material
+const saturnGeometry = new THREE.SphereGeometry(2, 64, 64);
+const saturnTexture = new THREE.TextureLoader().load("pic/2k_saturn.jpg"); // Adjust path if needed
+const saturnMaterial = new THREE.MeshStandardMaterial({ map: saturnTexture });
+const saturnMesh = new THREE.Mesh(saturnGeometry, saturnMaterial);
+saturnScene.add(saturnMesh);
+// Saturn Lighting
+const saturnAmbientLight = new THREE.AmbientLight(0xffffff, 0.6);
+const saturnPointLight = new THREE.PointLight(0xffffff, 1.2);
+saturnPointLight.position.set(5, 5, 5);
+saturnScene.add(saturnAmbientLight, saturnPointLight);
+// Saturn Animation loop
+function animateSaturn() {
+  requestAnimationFrame(animateSaturn);
+  saturnMesh.rotation.y += 0.003;
+  saturnRenderer.render(saturnScene, saturnCamera);
+}
+animateSaturn();
+
+
+</script>
     <footer>
         <p>Oz-Azell</p>
     </footer> 
