@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plant info</title>
-    <link rel="icon" href="pic/icon.jpg" type="image/png" />
+    <link rel="icon" href="icon.jpg" type="image/png" />
     <style>
 * {
         margin: 0;
@@ -614,7 +614,7 @@ mercuryCamera.position.z = 5;
 
 // Mercury Geometry and Material
 const mercuryGeometry = new THREE.SphereGeometry(2, 64, 64);
-const mercuryTexture = new THREE.TextureLoader().load("pic/2k_mercury.jpg"); // Make sure this file path is correct
+const mercuryTexture = new THREE.TextureLoader().load("2k_mercury.jpg"); // Make sure this file path is correct
 const mercuryMaterial = new THREE.MeshStandardMaterial({ map: mercuryTexture });
 const mercuryMesh = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
 mercuryScene.add(mercuryMesh);
@@ -647,7 +647,7 @@ venusCamera.position.z = 5;
 
 // Venus Geometry and Material
 const venusGeometry = new THREE.SphereGeometry(2, 64, 64);
-const venusTexture = new THREE.TextureLoader().load("pic/2k_venus_surface.jpg"); // Update path if needed
+const venusTexture = new THREE.TextureLoader().load("2k_venus_surface.jpg"); // Update path if needed
 const venusMaterial = new THREE.MeshStandardMaterial({ map: venusTexture });
 const venusMesh = new THREE.Mesh(venusGeometry, venusMaterial);
 venusScene.add(venusMesh);
@@ -680,7 +680,7 @@ marsCamera.position.z = 5;
 
 // Mars Geometry and Material
 const marsGeometry = new THREE.SphereGeometry(2, 64, 64);
-const marsTexture = new THREE.TextureLoader().load("pic/2k_mars.jpg"); // Adjust path if needed
+const marsTexture = new THREE.TextureLoader().load("2k_mars.jpg"); // Adjust path if needed
 const marsMaterial = new THREE.MeshStandardMaterial({ map: marsTexture });
 const marsMesh = new THREE.Mesh(marsGeometry, marsMaterial);
 marsScene.add(marsMesh);
@@ -713,7 +713,7 @@ jupiterCamera.position.z = 5;
 
 // Jupiter Geometry and Material
 const jupiterGeometry = new THREE.SphereGeometry(2, 64, 64);
-const jupiterTexture = new THREE.TextureLoader().load("pic/2k_jupiter.jpg"); // Adjust path if needed
+const jupiterTexture = new THREE.TextureLoader().load("2k_jupiter.jpg"); // Adjust path if needed
 const jupiterMaterial = new THREE.MeshStandardMaterial({ map: jupiterTexture });
 const jupiterMesh = new THREE.Mesh(jupiterGeometry, jupiterMaterial);
 jupiterScene.add(jupiterMesh);
@@ -746,7 +746,7 @@ uranusCamera.position.z = 5;
 
 // Uranus Geometry and Material
 const uranusGeometry = new THREE.SphereGeometry(2, 64, 64);
-const uranusTexture = new THREE.TextureLoader().load("pic/2k_uranus.jpg"); // Adjust path if needed
+const uranusTexture = new THREE.TextureLoader().load("2k_uranus.jpg"); // Adjust path if needed
 const uranusMaterial = new THREE.MeshStandardMaterial({ map: uranusTexture });
 const uranusMesh = new THREE.Mesh(uranusGeometry, uranusMaterial);
 uranusScene.add(uranusMesh);
@@ -776,7 +776,7 @@ neptuneCamera.position.z = 5;
 
 // Neptune Geometry and Material
 const neptuneGeometry = new THREE.SphereGeometry(2, 64, 64);  
-const neptuneTexture = new THREE.TextureLoader().load("pic/2k_neptune.jpg"); // Adjust path if needed
+const neptuneTexture = new THREE.TextureLoader().load("2k_neptune.jpg"); // Adjust path if needed
 const neptuneMaterial = new THREE.MeshStandardMaterial({ map: neptuneTexture });
 const neptuneMesh = new THREE.Mesh(neptuneGeometry, neptuneMaterial);
 neptuneScene.add(neptuneMesh);
@@ -806,7 +806,7 @@ const saturnCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
 saturnCamera.position.z = 5;
 // Saturn Geometry and Material
 const saturnGeometry = new THREE.SphereGeometry(2, 64, 64);
-const saturnTexture = new THREE.TextureLoader().load("pic/2k_saturn.jpg"); // Adjust path if needed
+const saturnTexture = new THREE.TextureLoader().load("2k_saturn.jpg"); // Adjust path if needed
 const saturnMaterial = new THREE.MeshStandardMaterial({ map: saturnTexture });
 const saturnMesh = new THREE.Mesh(saturnGeometry, saturnMaterial);
 saturnScene.add(saturnMesh);
