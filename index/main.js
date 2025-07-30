@@ -1,5 +1,5 @@
-const mercuryContainer = document.getElementById("mercury");
 
+const mercuryContainer = document.getElementById("mercury");
 // Mercury Renderer
 const mercuryRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 mercuryRenderer.setSize(200, 200);
